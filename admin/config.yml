@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "page"
+    label: "Главная страница"
+    files:
+      - file: "content.json"
+        label: "Контент страницы"
+        name: "content"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Дата последнего обновления", name: "date", widget: "datetime" }
+          - { label: "Картинка", name: "image", widget: "image" }
+          - { label: "Текст", name: "body", widget: "markdown" }
