@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1 id="page-title">Заголовок страницы</h1>
+    <p class="date">Последнее обновление: <span id="last-updated">2025-10-23</span></p>
+    <img id="main-image" src="images/placeholder.jpg" alt="Обложка страницы">
+    <div id="page-content" class="content">
+      <p>Это пример текстового блока. Здесь может быть текст, списки, ссылки и т.д.</p>
+    </div>
+  </main>
+  <script>
+    fetch('content.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('page-title').textContent = data.title;
+        document.getElementById('last-updated').textContent = data.date;
+        document.getElementById('main-image').src = data.image;
+        document.getElementById('page-content').innerHTML = marked.parse(data.body);
+      });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+</html>
